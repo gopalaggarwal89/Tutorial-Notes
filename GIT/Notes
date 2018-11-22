@@ -1,0 +1,70 @@
+create GIT folder
+git init - intialize git and create .git folder
+
+//list local configuration (global keyword for global changes)
+git config --local --list
+
+git config --local user.name "gopalaggarwal89"
+git config --local user.email "gopal.aggarwal89@gmail.com"
+
+//check the status of file
+git status
+
+Files which are not added will show as untracked file
+
+//Add a file
+git add <filename>
+
+//To unstage the file
+git rm --cached <filename>
+
+//Commit
+git commit -m "commit message"
+//For modified files
+git commit -a -m "Second commit"
+
+//verify logs
+git log
+git log -n <number of checkout>
+git log --until=1.minute.ago
+git log --since=1.day.ago
+git log --since=1.hour.ago
+git log --since=1.month.ago --until=2.weeks.ago
+git log --since 2000-01-01 --until=2012-12-21
+
+//checkout
+ -- Checking out files
+ -- Checking out commits
+ -- Checking out branches
+
+git checkout -- <file>
+
+//Avoid crlf warning message
+git config --global core.autocrlf true
+
+//Displays latest commit
+git show
+
+git show --all //all commit details
+
+//difference in non-commit file
+git diff <filename>
+
+//Branching
+//list all branches
+git branch
+
+git branch <branchname> //creates a new branch from master as dev
+git checkout  <branchname> // switch to dev branch
+git checkout -b <branchname> //Creates a new branch and switch
+
+// merge code from dev to master
+git checkout master
+git merge <branchname>
+
+//delete branch
+git branch -d <branchname> ----- Safe delete
+git branch -D <branchname> ----- Force delete
+
+//ignore files in GIT
+create .gitignore and add file names or extenstion types
