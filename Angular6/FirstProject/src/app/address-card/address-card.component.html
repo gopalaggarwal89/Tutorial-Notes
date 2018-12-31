@@ -1,0 +1,11 @@
+<div>
+  <h1>{{user.name}}</h1>
+  <h3>{{user.title}}</h3>
+  <button (click)="toggleCollapse()">{{buttonText}}</button>
+  <div *ngIf=!isCollapsed>
+  <p>{{user.address}}</p>
+  <div *ngIf="user.phone.length > 0">
+    <p *ngFor="let phoneNumber of user.phone">{{phoneNumber}}</p>
+  </div>
+</div>
+</div>
