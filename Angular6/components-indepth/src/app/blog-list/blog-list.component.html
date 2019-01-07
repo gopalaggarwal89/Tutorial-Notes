@@ -1,0 +1,9 @@
+<!--<div *ngFor="let blog of blogPost"> 
+<app-blog-post-tile [post]="blog"></app-blog-post-tile>
+</div>-->
+
+<a href="#" (click)="expandAll()">Expand All</a>
+<a href="#" (click)="favoriteAll()">Favorite All</a>
+<app-blog-post-tile *ngFor="let item of blogPost[currentPage]" [post]="item" #tile></app-blog-post-tile>
+<app-paginator [numberOfPages]="blogPost.length" 
+        (pageNumberClick)="updatePageCount($event)"></app-paginator>

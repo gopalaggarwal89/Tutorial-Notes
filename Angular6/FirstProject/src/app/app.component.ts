@@ -10,6 +10,8 @@ export class AppComponent {
 
   user: User;
 
+  text: String;
+
   constructor(){
 
     this.user = new User();
