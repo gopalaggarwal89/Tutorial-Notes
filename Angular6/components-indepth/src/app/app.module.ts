@@ -11,6 +11,7 @@ import { BlogDataService } from './blog-data.service';
 import { HighlightDirective } from './highlight.directive';
 import { HighlightWithInputDirective } from './highlight-with-input.directive';
 import { ShellComponent } from './shell/shell.component';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ShellComponent } from './shell/shell.component';
     PaginatorComponent,
     HighlightDirective,
     HighlightWithInputDirective,
-    ShellComponent
+    ShellComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
