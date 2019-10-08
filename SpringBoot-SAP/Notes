@@ -1,0 +1,81 @@
+ mysql -uroot -p
+
+ http://collabedit.com/6bar3 - access code
+
+Dependecy injection type - 
+Property based - setter
+Constructor based
+Field based
+
+-------------------------------------------My SQL commands---------------------------
+create database ariba;
+use ariba;
+
+//Create table
+CREATE TABLE `product` (
+  `product_id` int(11) NOT NULL auto_increment,
+  `product_name` varchar(50) default NULL,
+  `product_price` decimal(10,0) default NULL,
+  `product_qoh` int(11) default NULL,
+  PRIMARY KEY  (`product_id`)
+) ENGINE=InnoDB;
+
+//describe table
+desc product
+
+
+
+
+ - command to clean maven failed download:
+ find ~/.m2  -name "*.lastUpdated" -exec grep -q "Could not transfer" {} \; -print -exec rm {} \;
+
+ ------------------------------------------------------------------------------------------------------------------------------------
+ //Creating custom key value in application properties
+ 
+ Add attribute in bean with below sample annotation
+
+dev.name is a new custom key added in application.properties
+
+ @Value(${dev.name})
+ String name;
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+
+import com.ariba.training.aspects.TimeProfilerAspect;
+import com.ariba.training.domain.Product;
+import com.ariba.training.service.ProductService;
+
+@RunWith(SpringRunner.class)
+@WebMvcTest(value = {ProductController.class})
+public class ProductControllerTest {
+    
+    @Autowired
+    MockMvc mvc;
+    
+    @MockBean
+    ProductService service;
+    
+    @Test
+    public void testGetById() throws Exception {
+        //Arrange
+        Product data = new Product("test", 1999, 1000);
+        data.setId(1);
+        Mockito.when(service.findById(1)).thenReturn(data);
+        //Act and Assert
+        mvc.perform(get("/products/{id}", 1).accept(MediaType.APPLICATION_JSON))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$.id", is(1)));
+        
+    }
+
+}
